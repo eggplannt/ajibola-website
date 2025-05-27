@@ -32,3 +32,9 @@ main
 # OS X generated file
 .DS_Store
 
+# Ignore Windows thumbnail cache files and folder metadata
+Thumbs.db
+desktop.ini
+
+# If you want to be extra sure for desktop.ini in any subfolder:
+**/desktop.ini
