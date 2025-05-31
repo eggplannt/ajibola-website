@@ -1,0 +1,42 @@
+package components
+
+templ DarkModeBody() {
+	<body
+		x-data="{
+			darkMode: '',
+			isDark: false,
+			getIsDark() {
+				if (this.darkMode === 'dark') {
+					return true;
+				}
+				if (this.darkMode === 'light') {
+					return false;
+				}
+				return window.matchMedia('(prefers-color-scheme: dark)').matches;
+			}
+		}"
+		x-init="
+			let storedMode = localStorage.getItem('darkMode');
+			if (!storedMode || !['light', 'dark', 'system'].includes(storedMode)) {
+				storedMode = 'system'; // Default to 'system'
+				localStorage.setItem('darkMode', storedMode);
+			}
+			darkMode = storedMode;
+
+			isDark = getIsDark();
+
+			$watch('darkMode', newMode => {
+				localStorage.setItem('darkMode', newMode);
+				isDark = getIsDark();
+			});
+			window.matchMedia('(prefers-color-scheme: dark)').onchange = (event) => {
+				if (darkMode === 'system') {
+					isDark = event.matches;
+				}
+			};
+		"
+		:class="{'dark': isDark}"
+	>
+		{ children... }
+	</body>
+}

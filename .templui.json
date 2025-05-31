@@ -1,0 +1,6 @@
+{
+  "componentsDir": "cmd/web/components",
+  "utilsDir": "internal/utils",
+  "moduleName": "website",
+  "jsDir": "cmd/web/assets/js"
+}
