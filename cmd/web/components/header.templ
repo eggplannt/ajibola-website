@@ -7,21 +7,19 @@ templ Header() {
 	<div class="flex justify-between items-center p-4">
 		<p class="font-bold text-3xl">Ajibola Oguntade</p>
 		<div class="flex gap-4">
-
-			@button.Button(button.Props{
-				Class:      "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
-				Attributes: templ.Attributes{"@click": "window.open('http://github.com/eggplannt', '_black')"},
-			}) {
-				@icon.Github(icon.Props{Size: 35})
-			}
-
 			@button.Button(button.Props{
 				Class:      "bg-blue-400 p-3 h-auto hover:bg-blue-400 text-white",
 				Attributes: templ.Attributes{"@click": "window.open('http://linkedin.com/in/ajibola-oguntade/', '_black')"},
 			}) {
-				@icon.Linkedin(icon.Props{Size: 35, Fill: "white"})
+				@icon.Linkedin(icon.Props{Size: 25, Fill: "white"})
 			}
 
+			@button.Button(button.Props{
+				Class:      "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
+				Attributes: templ.Attributes{"@click": "window.open('http://github.com/eggplannt/ajibola-website', '_black')"},
+			}) {
+				@icon.Github(icon.Props{Size: 25})
+			}
 		</div>
 	</div>
 }
