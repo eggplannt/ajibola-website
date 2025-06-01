@@ -28,6 +28,10 @@
 
   --container-2xl: 1400px;
 }
+
+.multiline {
+  white-space: pre-wrap;
+}
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(20 14.3% 4.1%);
@@ -72,7 +76,6 @@
   --ring: hsl(35.5 91.7% 32.9%);
   --radius: 0.5rem;
 }
-
 @layer base {
   * {
     @apply border-border;

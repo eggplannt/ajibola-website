@@ -1,0 +1,12 @@
+package web
+
+import "website/cmd/web/components"
+
+templ App(startPage templ.Component) {
+	@components.Base() {
+		@components.Header()
+		<div id="tab">
+			@startPage
+		</div>
+	}
+}

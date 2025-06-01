@@ -2,18 +2,29 @@ package components
 
 import "website/cmd/web/components/button"
 import "website/cmd/web/components/icon"
+import "strings"
+import "fmt"
 
 templ Header() {
-	<div class="flex justify-between items-center p-4">
-		<p class="font-bold text-3xl">Ajibola Oguntade</p>
-		<div class="flex gap-4">
+	<div class="flex justify-between items-center py-4 px-6">
+		<p class="font-bold text-3xl w-64">Ajibola Oguntade</p>
+
+		<div 
+			class="flex gap-4"
+			x-data="{path: ''}"
+			x-init="path = window.location.pathname"
+		>
+			@tab("Home")
+			@tab("Portfolio")
+		</div>
+
+		<div class="flex gap-4 w-64 justify-end">
 			@button.Button(button.Props{
 				Class:      "bg-blue-400 p-3 h-auto hover:bg-blue-400 text-white",
 				Attributes: templ.Attributes{"@click": "window.open('http://linkedin.com/in/ajibola-oguntade/', '_black')"},
 			}) {
 				@icon.Linkedin(icon.Props{Size: 25, Fill: "white"})
 			}
-
 			@button.Button(button.Props{
 				Class:      "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
 				Attributes: templ.Attributes{"@click": "window.open('http://github.com/eggplannt/ajibola-website', '_black')"},
@@ -24,5 +35,18 @@ templ Header() {
 	</div>
 }
 
-templ headerButton(i func(...icon.Props) templ.Component, link string) {
+//
+templ tab(name string) {
+	{{ href := "/" + strings.ToLower(name)}}
+	<div
+		class="p-2 rounded-sm cursor-pointer hover:underline text-xl"
+		:class={fmt.Sprintf("path === '%s'? 'bg-border' : 'bg-transparent text-foreground'", href)}
+		@click={fmt.Sprintf("path = '%s'; $dispatch('switch-tab')", href)}
+		hx-get={href + "_page"}
+		hx-target="#tab"
+		hx-trigger="switch-tab"
+		hx-push-url={href}
+	>
+		{ name }
+	</div>
 }

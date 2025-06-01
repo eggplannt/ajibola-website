@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"website/cmd/web"
-	"website/cmd/web/components"
+	"website/cmd/web/pages"
 
 	"github.com/a-h/templ"
 )
@@ -14,7 +14,13 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	fileServer := http.FileServer(http.FS(web.Files))
 	mux.Handle("/assets/", fileServer)
-	mux.Handle("/", templ.Handler(components.App()))
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/home", http.StatusSeeOther)
+	})
+	mux.Handle("/home", templ.Handler(web.App(pages.Home())))
+	mux.Handle("/home_page", templ.Handler((pages.Home())))
+	mux.Handle("/portfolio", templ.Handler(web.App(pages.Portfolio())))
+	mux.Handle("/portfolio_page", templ.Handler((pages.Portfolio())))
 
 	return s.corsMiddleware(mux)
 }
