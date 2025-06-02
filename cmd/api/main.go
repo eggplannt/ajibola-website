@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
 
@@ -47,7 +49,8 @@ func main() {
 	// Run graceful shutdown in a separate goroutine
 	go gracefulShutdown(server, done)
 
-	fmt.Println("Server started")
+	port, _ := strconv.Atoi(os.Getenv("PORT"))
+	fmt.Printf("Serving on http://localhost:%d\n", port)
 	err := server.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		panic(fmt.Sprintf("http server error: %s", err))

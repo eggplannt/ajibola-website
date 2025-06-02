@@ -1,12 +1,32 @@
 package pages
 
+import "website/cmd/web/components/button"
+
 templ Home() {
 	<div class="h-screen flex flex-col px-20">
-		<div class="h-96"></div>
-		<p class="text-4xl font-bold">Full Stack Developer</p>
-		<p class="text-2xl multiline">
-			Versed in many frontend and backend frameworks and
-			quick to adapt
+		<div class="h-80"></div>
+		<p 
+			class="text-4xl font-bold">I'm AJ Oguntade,</p>
+		<p class="text-2xl w-[42rem]">
+			I'm an adaptable full stack engineer versed in many frontend and backend frameworks.
 		</p>
+		<div class="h-5"></div>
+		<div class="flex gap-4">
+			@button.Button(button.Props{
+				Class:      "flex-shrink text-lg",
+				Href:       "/assets/img/Ajibola Oguntade.pdf",
+				Attributes: templ.Attributes{"download": ""},
+			}) {
+				Download Resume
+			}
+			@button.Button(button.Props{
+				Target: "_blank",
+				Variant: button.VariantOutline,
+				Class: "flex-shrink text-lg",
+				Href:  "http://github.com/eggplannt/ajibola-website",
+			}) {
+				See how I made this site
+			}
+		</div>
 	</div>
 }

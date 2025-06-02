@@ -6,28 +6,45 @@ import "strings"
 import "fmt"
 
 templ Header() {
-	<div class="flex justify-between items-center py-4 px-6">
-		<p class="font-bold text-3xl w-64">Ajibola Oguntade</p>
-
+	<div class="flex justify-between items-center py-4 px-6 text-center">
+		<div class="w-64 flex justify-start">
+			@button.Button(button.Props{
+				Class: "font-bold text-xl hover:bg-transparent",
+				Href: "/home",
+				Variant: button.VariantGhost,
+			}){
+				The Oguntade Site
+			}
+		</div>
 		<div 
-			class="flex gap-4"
+			class="flex gap-4 bg-accent rounded-lg p-1.5"
 			x-data="{path: ''}"
 			x-init="path = window.location.pathname"
 		>
 			@tab("Home")
 			@tab("Portfolio")
+			<a 
+				class="p-1 rounded-sm cursor-pointer hover:underline text-lg text-foreground"
+				download
+				href="/assets/img/Ajibola Oguntade.pdf"
+			>
+				Resume
+			</a>
 		</div>
 
 		<div class="flex gap-4 w-64 justify-end">
+			@themeButton()
 			@button.Button(button.Props{
 				Class:      "bg-blue-400 p-3 h-auto hover:bg-blue-400 text-white",
-				Attributes: templ.Attributes{"@click": "window.open('http://linkedin.com/in/ajibola-oguntade/', '_black')"},
+				Href: "http://linkedin.com/in/ajibola-oguntade/",
+				Target: "_blank",
 			}) {
 				@icon.Linkedin(icon.Props{Size: 25, Fill: "white"})
 			}
 			@button.Button(button.Props{
 				Class:      "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
-				Attributes: templ.Attributes{"@click": "window.open('http://github.com/eggplannt/ajibola-website', '_black')"},
+				Href: "http://github.com/eggplannt/ajibola-website",
+				Target: "_blank",
 			}) {
 				@icon.Github(icon.Props{Size: 25})
 			}
@@ -35,18 +52,27 @@ templ Header() {
 	</div>
 }
 
-//
 templ tab(name string) {
 	{{ href := "/" + strings.ToLower(name)}}
 	<div
-		class="p-2 rounded-sm cursor-pointer hover:underline text-xl"
-		:class={fmt.Sprintf("path === '%s'? 'bg-border' : 'bg-transparent text-foreground'", href)}
-		@click={fmt.Sprintf("path = '%s'; $dispatch('switch-tab')", href)}
+		class="p-1 cursor-pointer hover:underline text-lg rounded-md"
+		:class={fmt.Sprintf("path === '%s'? 'bg-primary text-primary-foreground' : 'bg-transparent text-foreground'", href)}
+		@click={fmt.Sprintf("path = '%s'", href)}
 		hx-get={href + "_page"}
 		hx-target="#tab"
-		hx-trigger="switch-tab"
+		hx-trigger="click"
 		hx-push-url={href}
 	>
 		{ name }
 	</div>
+}
+
+templ themeButton() {
+	@button.Button(button.Props{
+		Variant: button.VariantGhost,
+		Class:      "rounded-full p-3 h-auto",
+		Attributes: templ.Attributes{"@click": "darkMode = isDark ? 'light' : 'dark'"},
+	}) {
+		@icon.Sun(icon.Props{Size: 25})
+	}
 }
