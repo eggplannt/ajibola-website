@@ -1,47 +1,13 @@
-# Project website
+# Oguntade Website (Desktop Support Only)
 
-One Paragraph of project description goes here
+A small website I wrote in go.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-## Air
-
-Live reload the application
+To get the server running on your local system run (make sure you have go installed on your system):
 
 ```bash
-air
+go run ./cmd/api/main.go
 ```
 
-## Justfile
-
-Run build make command with tests
-
-```bash
-just all
-```
-
-Build the application
-
-```bash
-just build
-```
-
-Run the application
-
-```bash
-just run
-```
-
-Run the test suite:
-
-```bash
-just test
-```
-
-Clean up binary from the last build:
-
-```bash
-just clean
-```
+Then click on the generated local host link.
