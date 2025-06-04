@@ -282,9 +282,6 @@
     width: 40rem;
     height: 40rem;
   }
-  .h-5 {
-    height: calc(var(--spacing) * 5);
-  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
