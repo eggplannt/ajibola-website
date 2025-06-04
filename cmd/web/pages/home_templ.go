@@ -31,7 +31,7 @@ func Home() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"h-screen flex flex-col px-20\"><div class=\"h-80\"></div><p class=\"text-4xl font-bold\">I'm AJ Oguntade,</p><p class=\"text-2xl w-[42rem]\">I'm an adaptable full stack engineer versed in many frontend and backend frameworks.</p><div class=\"h-5\"></div><div class=\"flex gap-4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"h-screen flex flex-col\"><div class=\"h-32\"></div><div class=\"flex items-center px-20\"><div class=\"flex flex-col\"><p class=\"text-5xl font-bold\">I'm AJ Oguntade,</p><p class=\"text-3xl w-[52rem] py-2\">I'm an adaptable full stack engineer versed in many frontend and backend frameworks.</p><div class=\"flex gap-4 py-5\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -54,8 +54,8 @@ func Home() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = button.Button(button.Props{
-			Class:      "flex-shrink text-lg",
-			Href:       "/assets/img/Ajibola Oguntade.pdf",
+			Class:      "flex-shrink text-xl",
+			Href:       "http://docs.google.com/document/d/1un5P8FsGaDjT9gW8q74lyM-_3ctDJH2ETph_T5q7eDE/export?format=pdf",
 			Attributes: templ.Attributes{"download": ""},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
@@ -73,7 +73,33 @@ func Home() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "See how I made this site")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "Go to Projects\t")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = button.Button(button.Props{
+			Variant: button.VariantOutline,
+			Class:   "flex-shrink text-xl",
+			Href:    "/projects",
+		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Var4 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "See how I made this site")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,13 +108,13 @@ func Home() templ.Component {
 		templ_7745c5c3_Err = button.Button(button.Props{
 			Target:  "_blank",
 			Variant: button.VariantOutline,
-			Class:   "flex-shrink text-lg",
+			Class:   "flex-shrink text-xl",
 			Href:    "http://github.com/eggplannt/ajibola-website",
-		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div><div class=\"w-64\"></div><img class=\"size-[40rem] rounded-full\" src=\"/assets/img/photo.jpg\"></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

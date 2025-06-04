@@ -4,7 +4,6 @@ package card
 import (
 	"website/cmd/web/components/aspectratio"
 	"website/internal/utils"
-	"fmt"
 )
 
 type MediaPosition string
@@ -168,7 +167,6 @@ templ Content(props ...ContentProps) {
 	{{ var p ContentProps }}
 	if len(props) > 0 {
 		{{ p = props[0] }}
-		{{ fmt.Println(p)}}
 	}
 	<div
 		if p.ID != "" {

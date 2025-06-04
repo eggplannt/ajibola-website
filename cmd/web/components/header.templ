@@ -17,19 +17,12 @@ templ Header() {
 			}
 		</div>
 		<div 
-			class="flex gap-4 bg-accent rounded-lg p-1.5"
+			class="flex gap-4 bg-accent border-1 rounded-lg p-1.5"
 			x-data="{path: ''}"
 			x-init="path = window.location.pathname"
 		>
 			@tab("Home")
-			@tab("Portfolio")
-			<a 
-				class="p-1 rounded-sm cursor-pointer hover:underline text-lg text-foreground"
-				download
-				href="/assets/img/Ajibola Oguntade.pdf"
-			>
-				Resume
-			</a>
+			@tab("Projects")
 		</div>
 
 		<div class="flex gap-4 w-64 justify-end">
@@ -55,7 +48,7 @@ templ Header() {
 templ tab(name string) {
 	{{ href := "/" + strings.ToLower(name)}}
 	<div
-		class="p-1 cursor-pointer hover:underline text-lg rounded-md"
+		class="p-1 cursor-pointer text-xl rounded-md"
 		:class={fmt.Sprintf("path === '%s'? 'bg-primary text-primary-foreground' : 'bg-transparent text-foreground'", href)}
 		@click={fmt.Sprintf("path = '%s'", href)}
 		hx-get={href + "_page"}

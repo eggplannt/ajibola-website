@@ -1,0 +1,62 @@
+package pages
+
+import "website/cmd/web/components/card"
+
+templ Projects() {
+	<div class="h-screen flex flex-col px-20">
+		<div class="h-12"></div>
+		<div class="flex flex-col w-[80%] gap-5">
+			@project(
+				"Function",
+				[]string{"Flutter", "Firebase"},
+			) {
+				A Flutter social media app with Firebase, enabling event posting, discovery, and user profiles, with future plans
+				for a Golang backend.
+			}
+			@project(
+				"Transit Monkey",
+				[]string{"Flutter", "Golang", "GTFS", "SQLite"},
+			) {
+				A user-friendly trip planning and transit information app with an efficient Golang API and a CLI database builder
+				for GTFS-to-SQLite conversion.
+			}
+			//@project(
+			//	"Function",
+			//	[]string{"Flutter", "Golang", "GTFS"},
+			//) {
+			//	A Flutter social media app with Firebase, enabling event posting, discovery, and user profiles, with future plans
+			//	for a Golang backend.
+			//}
+			//@project(
+			//	"Function",
+			//	[]string{"Flutter", "Golang", "GTFS"},
+			//) {
+			//	A Flutter social media app with Firebase, enabling event posting, discovery, and user profiles, with future plans
+			//	for a Golang backend.
+			//}
+			<p class="text-4xl p-3 text-foreground/50">...Ongoing</p>
+		</div>
+	</div>
+}
+
+templ project(name string, tools []string) {
+	@card.Card(card.Props{Class: "bg-accent"}) {
+		@card.Header() {
+			@card.Title(card.TitleProps{Class: "text-3xl"}) {
+				{ name }
+			}
+			@card.Description(card.DescriptionProps{Class: "text-xl"}) {
+				{ children... }
+			}
+		}
+		@card.Content(card.ContentProps{Class: "self-end"}) {
+			<div class="flex items-end gap-2">
+				for _, tool := range tools {
+					<div class="rounded-sm bg-primary text-background/80 text-center text-xl font-semibold p-1.5">
+						{ tool }
+					</div>
+				}
+			</div>
+		}
+	}
+}

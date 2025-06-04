@@ -19,8 +19,9 @@ func (s *Server) RegisterRoutes() http.Handler {
 	})
 	mux.Handle("/home", templ.Handler(web.App(pages.Home())))
 	mux.Handle("/home_page", templ.Handler((pages.Home())))
-	mux.Handle("/portfolio", templ.Handler(web.App(pages.Portfolio())))
-	mux.Handle("/portfolio_page", templ.Handler((pages.Portfolio())))
+
+	mux.Handle("/projects", templ.Handler(web.App(pages.Projects())))
+	mux.Handle("/projects_page", templ.Handler((pages.Projects())))
 
 	return s.corsMiddleware(mux)
 }
