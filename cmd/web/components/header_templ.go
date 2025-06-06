@@ -53,7 +53,7 @@ func Header() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "The Oguntade Site")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "Oguntade.Site")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
