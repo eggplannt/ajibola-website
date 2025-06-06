@@ -1,4 +1,4 @@
-# Oguntade Website (Desktop Support Only)
+# Oguntade Website
 #### A small personal website I wrote in go. Feel free to use the code for insparation or as a guide
 
 
