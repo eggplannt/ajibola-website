@@ -1,71 +1,108 @@
 package components
 
 import "website/cmd/web/components/button"
+import "website/cmd/web/components/separator"
 import "website/cmd/web/components/icon"
 import "strings"
 import "fmt"
+import "website/cmd/web/components/drawer"
+import "website/internal/utils"
 
 templ Header() {
 	<div class="flex justify-between items-center py-4 px-6 text-center">
-		<div class="w-64 flex justify-start">
-			@button.Button(button.Props{
-				Class: "font-bold text-xl hover:bg-transparent",
-				Href: "/home",
-				Variant: button.VariantGhost,
-			}){
-				The Oguntade Site
-			}
+		@button.Button(button.Props{
+			Class:   "font-bold text-xl hover:bg-transparent",
+			Href:    "/home",
+			Variant: button.VariantGhost,
+		}) {
+			The Oguntade Site
+		}
+		<div class="hidden md:flex">
+			<div
+				class="flex gap-4 bg-accent border-1 rounded-lg p-1.5 text-xl"
+				x-data="{path: ''}"
+				x-init="path = window.location.pathname"
+			>
+				@tabs("")
+			</div>
+			<div class="w-10"></div>
+			@socials()
 		</div>
-		<div 
-			class="flex gap-4 bg-accent border-1 rounded-lg p-1.5"
-			x-data="{path: ''}"
-			x-init="path = window.location.pathname"
-		>
-			@tab("Home")
-			@tab("Projects")
-		</div>
-
-		<div class="flex gap-4 w-64 justify-end">
-			@themeButton()
-			@button.Button(button.Props{
-				Class:      "bg-blue-400 p-3 h-auto hover:bg-blue-400 text-white",
-				Href: "http://linkedin.com/in/ajibola-oguntade/",
-				Target: "_blank",
-			}) {
-				@icon.Linkedin(icon.Props{Size: 25, Fill: "white"})
-			}
-			@button.Button(button.Props{
-				Class:      "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
-				Href: "http://github.com/eggplannt/ajibola-website",
-				Target: "_blank",
-			}) {
-				@icon.Github(icon.Props{Size: 25})
-			}
-		</div>
+		@sideMenu()
 	</div>
 }
 
-templ tab(name string) {
-	{{ href := "/" + strings.ToLower(name)}}
-	<div
-		class="p-1 cursor-pointer text-xl rounded-md"
-		:class={fmt.Sprintf("path === '%s'? 'bg-primary text-primary-foreground' : 'bg-transparent text-foreground'", href)}
-		@click={fmt.Sprintf("path = '%s'", href)}
-		hx-get={href + "_page"}
+templ tab(name string, class string) {
+	{{ href := "/" + strings.ToLower(name) }}
+	<button
+		class={utils.TwMerge("p-1 cursor-pointer rounded-md w-full", class)}
+		:class={ fmt.Sprintf(" path === '%s' ? 'bg-primary text-primary-foreground' : 'bg-transparent text-foreground'", href) }
+		@click={ fmt.Sprintf("path='%s'", href) }
+		hx-get={ href + "_page" }
 		hx-target="#tab"
 		hx-trigger="click"
-		hx-push-url={href}
+		hx-push-url={ href }
+		data-drawer-close
 	>
 		{ name }
-	</div>
+	</button>
+}
+
+templ tabs(class string) {
+	@tab("Home", class)
+	@tab("Projects", class)
 }
 
 templ themeButton() {
 	@button.Button(button.Props{
-		Variant: button.VariantGhost,
+		Variant:    button.VariantGhost,
 		Class:      "rounded-full p-3 h-auto",
 		Attributes: templ.Attributes{"@click": "darkMode = isDark ? 'light' : 'dark'"},
 	}) {
 		@icon.Sun(icon.Props{Size: 25})
+	}
+}
+
+templ socials() {
+	<div class="flex gap-4 justify-end">
+		@themeButton()
+		@button.Button(button.Props{
+			Class:  "bg-blue-400 p-3 h-auto hover:bg-blue-400 text-white",
+			Href:   "http://linkedin.com/in/ajibola-oguntade/",
+			Target: "_blank",
+		}) {
+			@icon.Linkedin(icon.Props{Size: 25, Fill: "white"})
+		}
+		@button.Button(button.Props{
+			Class:  "rounded-full bg-foreground p-3 h-auto hover:bg-foreground text-background",
+			Href:   "http://github.com/eggplannt",
+			Target: "_blank",
+		}) {
+			@icon.Github(icon.Props{Size: 25})
+		}
+	</div>
+}
+
+templ sideMenu() {
+	@drawer.Drawer(drawer.Props{Class: "md:hidden"}) {
+		@drawer.Trigger() {
+			@button.Button(button.Props{Variant: button.VariantGhost}) {
+				@icon.Menu()
+			}
+		}
+		@drawer.Content(drawer.ContentProps{Position: drawer.PositionRight, Class: "px-3"}) {
+			@drawer.Header() {
+				@drawer.Title() {
+					Menu
+				}
+			}
+			@separator.Separator(separator.Props{Class: "px-3"})
+			<div class="py-3">
+				@socials()
+			</div>
+			<div class="flex flex-col items-end	 text-3xl w-full text-end">
+				@tabs("hover:bg-foreground/5 p-2")
+			</div>
+		}
 	}
 }

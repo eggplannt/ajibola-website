@@ -31,7 +31,7 @@ func Home() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"h-screen flex flex-col\"><div class=\"h-32\"></div><div class=\"flex items-center px-20\"><div class=\"flex flex-col\"><p class=\"text-5xl font-bold\">I'm AJ Oguntade,</p><p class=\"text-3xl w-[52rem] py-2\">I'm an adaptable full stack engineer versed in many frontend and backend frameworks.</p><div class=\"flex gap-4 py-5\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"h-screen flex flex-col\"><div class=\"flex lg:pt-40 px-10 lg:px-20 justify-between flex-wrap lg:flex-nowrap\"><div class=\"flex-auto flex-col self-center max-w-[52rem] py-8 lg:py-0\"><p class=\"text-5xl font-bold\">I'm AJ Oguntade,</p><p class=\"text-3xl w-full py-2\">I'm an adaptable full stack engineer versed in many frontend and backend frameworks.</p><div class=\"flex gap-4 py-5 flex-wrap\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -54,7 +54,7 @@ func Home() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = button.Button(button.Props{
-			Class:      "flex-shrink text-xl",
+			Class:      "flex-shrink text-lg lg:text-xl",
 			Href:       "http://docs.google.com/document/d/1un5P8FsGaDjT9gW8q74lyM-_3ctDJH2ETph_T5q7eDE/export?format=pdf",
 			Attributes: templ.Attributes{"download": ""},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
@@ -73,7 +73,7 @@ func Home() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "Go to Projects\t")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "Go to Projects")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -81,7 +81,7 @@ func Home() templ.Component {
 		})
 		templ_7745c5c3_Err = button.Button(button.Props{
 			Variant: button.VariantOutline,
-			Class:   "flex-shrink text-xl",
+			Class:   "flex-shrink text-lg lg:text-xl",
 			Href:    "/projects",
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func Home() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div><div class=\"w-64\"></div><img class=\"size-[40rem] rounded-full\" src=\"/assets/img/photo.jpg\"></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div><div class=\"flex-auto relative w-full max-w-[600px] aspect-square mx-auto overflow-hidden rounded-full\"><img class=\"absolute h-full w-full object-cover object-top\" src=\"/assets/img/photo.jpg\"></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
