@@ -518,7 +518,7 @@ func sideMenu() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = separator.Separator(separator.Props{Class: "px-3"}).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = separator.Separator().Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -530,11 +530,11 @@ func sideMenu() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</div><div class=\"flex flex-col items-end\t text-3xl w-full text-end\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</div><div class=\"flex flex-col items-end\ttext-2xl w-full text-end\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = tabs("hover:bg-foreground/5 p-2").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = tabs("hover:bg-foreground/5 p-2 text-end").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -544,7 +544,7 @@ func sideMenu() templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = drawer.Content(drawer.ContentProps{Position: drawer.PositionRight, Class: "px-3"}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var21), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = drawer.Content(drawer.ContentProps{Position: drawer.PositionRight, Class: "px-6"}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var21), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

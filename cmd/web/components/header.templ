@@ -90,18 +90,18 @@ templ sideMenu() {
 				@icon.Menu()
 			}
 		}
-		@drawer.Content(drawer.ContentProps{Position: drawer.PositionRight, Class: "px-3"}) {
+		@drawer.Content(drawer.ContentProps{Position: drawer.PositionRight, Class: "px-6"}) {
 			@drawer.Header() {
 				@drawer.Title() {
 					Menu
 				}
 			}
-			@separator.Separator(separator.Props{Class: "px-3"})
+			@separator.Separator()
 			<div class="py-3">
 				@socials()
 			</div>
-			<div class="flex flex-col items-end	 text-3xl w-full text-end">
-				@tabs("hover:bg-foreground/5 p-2")
+			<div class="flex flex-col items-end	text-2xl w-full text-end">
+				@tabs("hover:bg-foreground/5 p-2 text-end")
 			</div>
 		}
 	}
