@@ -114,7 +114,7 @@ func Home() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div><div class=\"flex-auto relative w-full max-w-[600px] aspect-square mx-auto overflow-hidden rounded-full\"><img class=\"absolute h-full w-full object-cover object-top\" src=\"/assets/img/photo.jpg\"></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div><div class=\"flex-auto relative w-full max-w-[600px] aspect-square mx-auto overflow-hidden rounded-full mb-10 lg:mb-0\"><img class=\"absolute h-full w-full object-cover object-top\" src=\"/assets/img/photo.jpg\"></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
