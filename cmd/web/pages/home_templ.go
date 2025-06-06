@@ -109,7 +109,7 @@ func Home() templ.Component {
 			Target:  "_blank",
 			Variant: button.VariantOutline,
 			Class:   "flex-shrink text-xl",
-			Href:    "http://github.com/eggplannt/ajibola-website",
+			Href:    "http://github.com/eggplannt/oguntade-website",
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
