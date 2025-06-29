@@ -6,9 +6,9 @@
 
 To get the site running on your local system run:
 
-(make sure you have go installed on your system)
 ```bash
 go run ./cmd/api/main.go
 ```
+**(make sure you have go installed on your system)**
 
-Then click on the generated local host link
+Then go to the generated local host link
