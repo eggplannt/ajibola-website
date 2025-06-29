@@ -11,4 +11,4 @@ go run ./cmd/api/main.go
 ```
 **(make sure you have go installed on your system)**
 
-Then go to the generated local host link
+Then go to the generated local link
